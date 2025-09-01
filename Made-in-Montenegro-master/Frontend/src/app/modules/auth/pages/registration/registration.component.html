@@ -1,0 +1,86 @@
+<app-navbar2></app-navbar2>
+<div class="form-container">
+  <h2>Registracija</h2>
+
+  <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <label for="ime">Ime: <span class="required">*</span></label>
+    <input type="text" id="ime" formControlName="ime" />
+    <div *ngIf="ime.invalid && (ime.dirty || ime.touched)" class="error">
+      <small *ngIf="ime.errors?.['required']">Ime je obavezno.</small>
+    </div>
+
+    <label for="prezime">Prezime: <span class="required">*</span></label>
+    <input type="text" id="prezime" formControlName="prezime" />
+    <div
+      *ngIf="prezime.invalid && (prezime.dirty || prezime.touched)"
+      class="error"
+    >
+      <small *ngIf="prezime.errors?.['required']">Prezime je obavezno.</small>
+    </div>
+
+    <label for="email">Email: <span class="required">*</span></label>
+    <input type="email" id="email" formControlName="email" />
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error">
+      <small *ngIf="email.errors?.['required']">Email je obavezan.</small>
+      <small *ngIf="email.errors?.['email']">Email nije validan.</small>
+    </div>
+
+    <label for="adresa">Adresa: <span class="required">*</span></label>
+    <input type="text" id="adresa" formControlName="adresa" />
+    <div
+      *ngIf="adresa.invalid && (adresa.dirty || adresa.touched)"
+      class="error"
+    >
+      <small *ngIf="adresa.errors?.['required']">Adresa je obavezna.</small>
+    </div>
+
+    <label for="town">Grad: <span class="required">*</span></label>
+    <select id="town" formControlName="town" class="half-width">
+      <option value="">-- Izaberi grad --</option>
+      <option *ngFor="let town of towns" [value]="town._id">
+        {{ town.ime }}
+      </option>
+    </select>
+
+    <div *ngIf="town.invalid && (town.dirty || town.touched)" class="error">
+      <small *ngIf="town.errors?.['required']">Grad je obavezan.</small>
+    </div>
+
+    <label for="password">Lozinka: <span class="required">*</span></label>
+    <input type="password" id="password" formControlName="password" />
+    <div
+      *ngIf="password.invalid && (password.dirty || password.touched)"
+      class="error"
+    >
+      <small *ngIf="password.errors?.['required']">Lozinka je obavezna.</small>
+      <small *ngIf="password.errors?.['minlength']"
+        >Lozinka mora imati najmanje 6 karaktera.</small
+      >
+    </div>
+
+    <label for="confirmPassword"
+      >Potvrdi lozinku: <span class="required">*</span></label
+    >
+    <input
+      type="password"
+      id="confirmPassword"
+      formControlName="confirmPassword"
+    />
+    <div
+      *ngIf="
+        confirmPassword.invalid &&
+        (confirmPassword.dirty || confirmPassword.touched)
+      "
+      class="error"
+    >
+      <small *ngIf="confirmPassword.errors?.['required']"
+        >Potvrda lozinke je obavezna.</small
+      >
+    </div>
+
+    <p *ngIf="errorMessage" class="form-error">{{ errorMessage }}</p>
+
+    <button type="submit" [disabled]="registrationForm.invalid" class="submit-btn">Registruj se</button>
+  </form>
+</div>
+<app-footer></app-footer>

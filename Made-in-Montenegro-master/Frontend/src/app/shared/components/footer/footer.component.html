@@ -1,0 +1,40 @@
+<footer class="footer">
+  <!-- Lijeva strana: logo -->
+  <div class="footer__logo">
+    <img src="assets/logoBijeli.png" alt="Logo" />
+  </div>
+
+  <!-- Sredina: newsletter + pravne informacije -->
+  <div class="footer__newsletter">
+    <h4>Prijavi se na newsletter</h4>
+    <form (submit)="subscribeNewsletter()">
+      <input type="email" placeholder="Unesite email..." required />
+      <button type="submit">Prijavi se</button>
+    </form>
+
+    <div class="footer__legal">
+      <a href="#">Politika privatnosti</a>
+      <a href="#">Uslovi korišćenja</a>
+      <a href="#">Kontakt</a>
+    </div>
+
+    <div class="footer__copy">
+      © 2025 Made in Montenegro. Sva prava zadržana.
+    </div>
+  </div>
+
+  <!-- Desna strana: korisnička podrška + društvene mreže -->
+  <div class="footer__right">
+    <div class="footer__support">
+      <h5>Korisnička podrška</h5>
+      <p>Email: <a href="mailto:podrska@madein.me">podrska&#64;madein.me</a></p>
+      <p>Telefon: +382 67 123 456</p>
+    </div>
+    <div class="footer__social">
+      <a><i class="fab fa-facebook-f"></i></a>
+      <a><i class="fab fa-instagram"></i></a>
+      <a><i class="fab fa-twitter"></i></a>
+      <a><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>

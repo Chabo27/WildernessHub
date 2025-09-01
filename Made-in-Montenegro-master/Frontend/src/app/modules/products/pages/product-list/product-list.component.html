@@ -1,0 +1,89 @@
+<app-navbar2></app-navbar2>
+
+<div class="page-wrapper">
+  <div class="content">
+    <h2>Proizvodi</h2>
+
+    <input
+      type="text"
+      placeholder="Pretraži po imenu"
+      [(ngModel)]="searchTerm"
+      (input)="filterProducts()"
+    />
+
+    <button (click)="prikaziFiltere = !prikaziFiltere">
+      {{ prikaziFiltere ? "Zatvori filtere" : "Filtriraj" }}
+    </button>
+
+    <div *ngIf="prikaziFiltere" class="filter-panel">
+      <!-- Proizvođači -->
+      <label><strong>Proizvođači:</strong></label><br />
+      <div *ngFor="let p of sviProizvodjaci">
+        <input
+          type="checkbox"
+          [value]="p"
+          (change)="onProizvodjacChange($event)"
+          [checked]="selectedProizvodjaci.includes(p)"
+        />
+        {{ p }}
+      </div>
+      <br />
+
+      <!-- Tipovi -->
+      <label><strong>Tipovi proizvoda:</strong></label><br />
+      <div *ngFor="let t of sviTipovi">
+        <input
+          type="checkbox"
+          [value]="t"
+          (change)="onTipChange($event)"
+          [checked]="selectedTipovi.includes(t)"
+        />
+        {{ t }}
+      </div>
+      <br />
+
+      <label><strong>Maksimalna cijena:</strong></label><br />
+      <input type="number" [(ngModel)]="maxCijena" /><br /><br />
+      <button (click)="primijeniFiltriranje()">Primijeni</button>
+      <button (click)="resetujFiltere()">Resetuj</button>
+    </div>
+
+    <div class="product-grid" *ngIf="products.length > 0">
+      <div
+        *ngFor="let proizvod of products"
+        (click)="openDetails(proizvod._id)"
+        class="product-card"
+      >
+        <div class="image-wrapper">
+          <img
+            [src]="'http://localhost:5000' + proizvod.slika"
+            alt="{{ proizvod.ime }}"
+          />
+        </div>
+
+        <div class="product-info">
+          <h3>{{ proizvod.ime }}</h3>
+          <p><strong>Proizvođač:</strong> {{ proizvod.proizvodjac.ime }}</p>
+          <p class="cijena">
+            {{ proizvod.cijena | currency : "EUR" : "symbol" : "1.2-2" }}
+          </p>
+          <button
+            (click)="dodajUKorpu($event, proizvod)"
+            [disabled]="jeDodatoMaksimum(proizvod)"
+          >
+            Dodaj u korpu
+          </button>
+          <p *ngIf="jeDodatoMaksimum(proizvod)" class="max-warning">
+            Maksimalna količina dodata.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="no-products" *ngIf="products.length === 0">
+      <p>Nema proizvoda koji odgovaraju pretrazi.</p>
+    </div>
+  </div>
+
+  <app-footer></app-footer>
+</div>

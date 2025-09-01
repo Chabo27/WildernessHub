@@ -1,0 +1,136 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  margin: 0; 
+  background-color: #222;
+  color: #fff;
+
+  &__logo img {
+    height: 150px; 
+    width: auto;
+  }
+
+  &__newsletter {
+    flex: 1;
+    text-align: center;
+
+    h4 {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    form {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      input {
+        padding: 0.5rem 1rem;
+        border: 1px solid #555;
+        border-radius: 4px;
+        background: #333;
+        color: #fff;
+        width: 220px;
+      }
+
+      button {
+        padding: 0.5rem 1rem;
+        background-color: #555;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #777;
+        }
+      }
+    }
+  }
+
+  &__legal {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+
+    a {
+      color: #fff;
+      font-size: 0.9rem;
+      text-decoration: none;
+
+      &:hover {
+        color: #aaa;
+      }
+    }
+  }
+
+  &__copy {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+  }
+
+  &__support {
+    text-align: right;
+
+    h5 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    p {
+      margin: 0.25rem 0;
+      font-size: 0.9rem;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+
+        &:hover {
+          color: #aaa;
+        }
+      }
+    }
+  }
+
+  &__social a {
+    margin-left: 1rem;
+    font-size: 1.3rem;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      color: #aaa;
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    &__right {
+      align-items: center;
+    }
+
+    &__social {
+      margin-top: 1rem;
+    }
+  }
+}

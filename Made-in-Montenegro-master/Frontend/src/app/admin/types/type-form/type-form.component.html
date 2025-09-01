@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>{{ editMode ? 'Izmijeni tip' : 'Dodaj novi tip' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label for="ime">Ime tipa:</label>
+    <input id="ime" type="text" formControlName="ime" />
+
+    <div *ngIf="form.get('ime')?.touched && form.get('ime')?.invalid">
+      <small style="color: red">Ime tipa je obavezno.</small>
+    </div>
+
+    <div class="buttons">
+      <button type="submit">{{ editMode ? 'Sačuvaj' : 'Dodaj' }}</button>
+      <button type="button" (click)="otkazi()">Otkaži</button>
+    </div>
+  </form>
+</div>

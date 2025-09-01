@@ -1,0 +1,84 @@
+<h2>Porudžbine korisnika</h2>
+<!-- FILTERI -->
+<input
+  type="text"
+  [(ngModel)]="pretraga"
+  placeholder="Pretraži po imenu korisnika"
+  style="margin-bottom: 0.5rem; padding: 0.5rem; width: 100%; max-width: 400px"
+/>
+
+<input
+  type="date"
+  [(ngModel)]="datumFilter"
+  style="margin-bottom: 0.5rem; padding: 0.5rem; width: 100%; max-width: 400px"
+/>
+
+<div *ngIf="getFiltriraneKupovine().length === 0" style="margin-bottom: 1rem">
+  Nema porudžbina za izabrani datum i/ili korisnika.
+</div>
+
+<div class="order-wrapper">
+  <div
+    class="order-card"
+    *ngFor="let narudzba of getFiltriraneKupovine()"
+    [id]="'pdf-' + narudzba._id"
+    (click)="toggleStavke(narudzba._id)"
+  >
+    <div class="order-header">
+      <div>
+        <p class="order-info">
+          <strong>Korisnik:</strong> {{ narudzba.korisnik?.ime }}
+          {{ narudzba.korisnik?.prezime }}<br />
+          <small>{{ narudzba.korisnik?.email }}</small>
+        </p>
+        <p class="order-info">
+          <strong>Datum:</strong> {{ narudzba.datum | date : "medium" }}
+        </p>
+        <p class="order-info">
+          <strong>Način plaćanja:</strong> {{ narudzba.nacinPlacanja }}
+        </p>
+      </div>
+      <div style="text-align: right">
+        <p class="order-total">
+          Ukupno: {{ getUkupno(narudzba._id) | currency : "EUR" }}
+        </p>
+        <button
+          class="btn-delete"
+          (click)="obrisiKupovinu(narudzba._id); $event.stopPropagation()"
+        >
+          Obriši porudžbinu
+        </button>
+        <button
+          [disabled]="!stavkeMap[narudzba._id]"
+          (click)="posaljiNaPotvrdu(narudzba); $event.stopPropagation()"
+          style="
+            margin-top: 0.5rem;
+            margin-left: 0.5rem;
+            background-color: #28a745;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+          "
+        >
+          Štampaj
+        </button>
+      </div>
+    </div>
+
+    <div
+      *ngIf="expandedPurchaseId === narudzba._id && stavkeMap[narudzba._id]"
+      class="order-items"
+    >
+      <p><strong>Stavke:</strong></p>
+      <ul>
+        <li *ngFor="let stavka of stavkeMap[narudzba._id]">
+          {{ stavka.proizvod?.ime || "Nepoznat proizvod" }} —
+          {{ stavka.kolicina }} ×
+          {{ stavka.proizvod?.cijena | currency : "EUR" }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

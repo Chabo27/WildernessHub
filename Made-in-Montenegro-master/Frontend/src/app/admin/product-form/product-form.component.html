@@ -1,0 +1,75 @@
+<div class="container">
+  <h2>{{ editMode ? "Izmijeni proizvod" : "Dodaj proizvod" }}</h2>
+
+  <form
+    [formGroup]="form"
+    (ngSubmit)="onSubmit()"
+    enctype="multipart/form-data"
+    novalidate
+  >
+    <label>Ime:</label>
+    <input type="text" formControlName="ime" />
+
+    <label>Opis:</label>
+    <textarea formControlName="opis" rows="3"></textarea>
+
+    <label>Cijena (€):</label>
+    <input type="number" formControlName="cijena" />
+    <small
+      *ngIf="
+        form.get('cijena')?.touched && form.get('cijena')?.hasError('required')
+      "
+      class="error"
+    >
+      Cijena je obavezna.
+    </small>
+
+    <label>Količina:</label>
+    <input type="number" formControlName="kolicina" />
+    <small
+      *ngIf="
+        form.get('kolicina')?.touched &&
+        form.get('kolicina')?.hasError('required')
+      "
+      class="error"
+    >
+      Količina je obavezna.
+    </small>
+
+    <label>Proizvođač:</label>
+    <select formControlName="proizvodjac">
+      <option *ngFor="let p of proizvodjaci" [value]="p._id">
+        {{ p.ime }}
+      </option>
+    </select>
+
+    <label>Tip proizvoda:</label>
+    <select formControlName="tip">
+      <option *ngFor="let t of tipovi" [value]="t._id">{{ t.ime }}</option>
+    </select>
+
+    <label>Slika:</label>
+    <input type="file" (change)="onFileChange($event)" />
+
+    <div
+      class="preview"
+      *ngIf="editMode && form.get('slika')?.value && !selectedFile"
+    >
+      <img
+        [src]="'http://localhost:5000' + form.get('slika')?.value"
+        width="100"
+      />
+    </div>
+
+    <div class="buttons">
+      <button
+        type="submit"
+        [disabled]="form.invalid"
+        [ngClass]="{ 'disabled-btn': form.invalid }"
+      >
+        {{ editMode ? "Sačuvaj" : "Dodaj" }}
+      </button>
+      <button type="button" (click)="otkazi()">Otkaži</button>
+    </div>
+  </form>
+</div>

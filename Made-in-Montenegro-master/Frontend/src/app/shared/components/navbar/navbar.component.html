@@ -1,0 +1,30 @@
+<nav class="navbar">
+  <!-- Lijeva strana: LOGO -->
+  <a routerLink="/" class="navbar__logo">
+    <img src="assets/logoCrni.png" alt="Logo" class="logo-slika" />
+  </a>
+
+  <!-- Hamburger dugme za male ekrane -->
+  <button class="navbar__toggle" (click)="toggleMenu()">☰</button>
+
+  <!-- Desna strana: LINKOVI -->
+  <ul [ngClass]="{ navbar__links: true, active: menuOpen }">
+    <li><a routerLink="/">Početna</a></li>
+    <li><a routerLink="/proizvodi">Proizvodi</a></li>
+    <li *ngIf="!authService.isLogged()">
+      <a routerLink="/auth/prijava">Prijavi se</a>
+    </li>
+    <li *ngIf="authService.isLogged()">
+      <a routerLink="/profil"
+        ><i class="fas fa-user-circle"></i>
+        <span class="ime-korisnika">{{ imeKorisnika }}</span></a
+      >
+    </li>
+    <li *ngIf="authService.isLogged()">
+      <a (click)="logout()">Odjavi se</a>
+    </li>
+    <li>
+      <a routerLink="/korpa">🛒<span class="broj-artikala">{{ brojArtikala }}</span></a>
+    </li>
+  </ul>
+</nav>

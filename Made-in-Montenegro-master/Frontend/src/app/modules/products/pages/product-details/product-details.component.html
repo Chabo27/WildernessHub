@@ -1,0 +1,35 @@
+<app-navbar2></app-navbar2>
+
+<div class="product-details-container" *ngIf="proizvod">
+  <div class="product-image">
+    <img
+      [src]="'http://localhost:5000' + proizvod.slika"
+      [alt]="proizvod.ime"
+    />
+  </div>
+
+  <div class="product-info">
+    <h2>{{ proizvod.ime }}</h2>
+
+    <p class="cijena">{{ proizvod.cijena | currency : "EUR" }}</p>
+
+    <p><strong>Opis:</strong> {{ proizvod.opis }}</p>
+    <p><strong>Proizvođač:</strong> {{ proizvod.proizvodjac.ime }}</p>
+    <p><strong>Tip:</strong> {{ proizvod.tip?.ime }}</p>
+    <p><strong>Dostupno:</strong> {{ proizvod.kolicina }} kom.</p>
+
+    <button
+      class="korpa-btn"
+      (click)="dodajUKorpu()"
+      [disabled]="jeDodatoMaksimum(proizvod)"
+    >
+      Dodaj u korpu
+    </button>
+
+    <p *ngIf="jeDodatoMaksimum(proizvod)" class="max-warning">
+      Maksimalna količina dodata.
+    </p>
+  </div>
+</div>
+
+<app-footer></app-footer>

@@ -1,0 +1,40 @@
+<h2 class="title">Plaćanje karticom</h2>
+
+<div *ngIf="loading" class="loader-container">
+  <div class="loader"></div>
+  <p>Obrađuje se plaćanje...</p>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-container" *ngIf="!loading">
+  <fieldset [disabled]="loading">
+    <label for="ime">Ime i prezime:</label>
+    <input id="ime" formControlName="ime" />
+
+    <label for="brojKartice">Broj kartice:</label>
+    <input id="brojKartice" formControlName="brojKartice" />
+    <div class="error" *ngIf="form.get('brojKartice')?.invalid && form.get('brojKartice')?.touched">
+      Broj kartice mora imati tačno 16 cifara.
+    </div>
+
+    <label for="datum">Datum isteka:</label>
+    <input id="datum" formControlName="datum" placeholder="MM/YY" />
+    <div class="error" *ngIf="form.get('datum')?.hasError('expired')">
+      Datum isteka mora biti u budućnosti (npr. 02/27)
+    </div>
+
+    <label for="cvv">CVV:</label>
+    <input id="cvv" formControlName="cvv" />
+    <div class="error" *ngIf="form.get('cvv')?.invalid && form.get('cvv')?.touched">
+      CVV mora imati tačno 3 cifre.
+    </div>
+
+    <div class="buttons">
+      <button type="submit" [disabled]="form.invalid || loading">
+        {{ loading ? 'Obrađuje se...' : 'Izvrši plaćanje' }}
+      </button>
+      <button type="button" class="cancel" (click)="odustani()" [disabled]="loading">
+        Odustani
+      </button>
+    </div>
+  </fieldset>
+</form>

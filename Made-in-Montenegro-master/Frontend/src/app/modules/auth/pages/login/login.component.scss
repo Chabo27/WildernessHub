@@ -1,0 +1,101 @@
+.auth-layout {
+  background: linear-gradient(135deg, #e0e7ff, #f8fafc); // svijetloplava → siva
+  min-height: 100vh;
+}
+
+.login-container {
+
+  max-width: 400px;
+  margin: 20vh auto;
+  padding: 2rem;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  text-align: left;
+
+  label {
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    &:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+  }
+}
+
+.submit-btn {
+  display: block;
+  margin: 1rem auto 0;
+  padding: 10px 24px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+.success-message {
+  color: green;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.register-text {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+
+  a {
+    color: #007bff;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .login-container {
+    padding: 1.5rem;
+  }
+}

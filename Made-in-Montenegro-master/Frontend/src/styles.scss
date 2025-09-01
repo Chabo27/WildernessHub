@@ -1,0 +1,85 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+
+}
+
+
+::ng-deep .toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  min-width: 220px;
+  text-align: center;
+  animation: fadeInOut 3s ease-in-out;
+  opacity: 0.95;
+  font-family: Arial, sans-serif;
+}
+
+.toast.success {
+  background-color: #28a745;
+}
+
+.toast.error {
+  background-color: #dc3545;
+}
+
+.toast.info {
+  background-color: #007bff;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+.toast-notification {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  background-color: #323232;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: toastFadeIn 0.3s ease-out;
+}
+
+/* Tipovi poruka */
+.toast-notification.success {
+  background-color: #28a745;
+}
+
+.toast-notification.error {
+  background-color: #dc3545;
+}
+
+.toast-notification.info {
+  background-color: #17a2b8;
+}
+
+@keyframes toastFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20%) translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateX(-50%);
+  }
+}
+

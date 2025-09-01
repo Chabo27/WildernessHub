@@ -1,0 +1,17 @@
+<section class="comments">
+  <h2>Šta kažu naši kupci</h2>
+  <div class="comments__grid">
+    <div class="comment" *ngFor="let komentar of komentari">
+      <div class="comment__header">
+        <span class="name">{{ komentar.ime }}</span>
+        <span class="grad" *ngIf="komentar.grad">• {{ komentar.grad }}</span>
+      </div>
+      <p class="tekst">“{{ komentar.tekst }}”</p>
+      <div class="zvjezdice">
+        <ng-container *ngFor="let z of [1,2,3,4,5]">
+          <i class="fas" [ngClass]="z <= komentar.ocjena ? 'fa-star' : 'fa-star text-muted'"></i>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,53 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.profile-container {
+  flex: 1;
+  padding: 2rem;
+  margin-top: 10vh;
+}
+
+/* --- Centrirana kartica profila --- */
+.profile-card {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  margin: 0 auto 2rem auto;
+  text-align: left;
+}
+
+/* --- Tvoji originalni stilovi --- */
+h2 {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 24px;
+  color: #333;
+}
+
+p {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #555;
+}
+
+button {
+  display: block;
+  margin: 30px auto;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

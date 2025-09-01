@@ -1,0 +1,24 @@
+<div class="container">
+  <h2>Tipovi proizvoda</h2>
+  <button class="add-btn" (click)="dodaj()">+ Dodaj novi tip</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Ime</th>
+        <th>Akcije</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tip of tipovi">
+        <td>{{ tip.ime }}</td>
+        <td>
+          <div class="akcije-btn-grupa">
+            <button (click)="izmijeni(tip._id)">Izmijeni</button>
+            <button (click)="obrisi(tip._id)">Obriši</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

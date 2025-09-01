@@ -1,0 +1,98 @@
+app-navbar2 {
+  position: relative; // ili static
+  z-index: 1000;
+}
+:host {
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 16px;
+  color: #ffffff;
+}
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 2rem;
+ background-color: rgba(0, 84, 119, 0.6);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+
+  &__logo .logo-slika {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  &__toggle {
+    display: none;
+    font-size: 1.6rem;
+    background: none;
+    border: none;
+    color: #ffff;
+    cursor: pointer;
+  }
+
+  &__links {
+    display: flex;
+    list-style: none;
+    gap: 1.5rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+    li a {
+      font-family: inherit;
+      color: #ffff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 400;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #c1f4eb;
+      }
+
+      i {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .ime-korisnika {
+  font-weight: bold;
+}
+
+.broj-artikala {
+  font-weight: bold;
+  color: #ffee06; // crvena nijansa (može i #ff0000)
+}
+
+ 
+  @media (max-width: 768px) {
+    &__toggle {
+      display: block;
+    }
+
+    &__links {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 2rem;
+      flex-direction: column;
+      background-color: rgba(0, 84, 119, 0.7);
+      backdrop-filter: blur(10px);
+      padding: 1rem;
+      border-radius: 4px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      z-index: 999;
+    }
+
+    &__links.active {
+      display: flex;
+    }
+  }
+}

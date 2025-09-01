@@ -1,0 +1,51 @@
+<app-navbar2></app-navbar2>
+<div class="cart-container">
+  <h2 class="cart-title">Vaša korpa</h2>
+
+  <div *ngIf="korpa.length === 0" class="empty-cart">
+    <p>Korpa je prazna.</p>
+  </div>
+
+  <div *ngFor="let item of korpa" class="cart-item">
+    <p *ngIf="item.kolicina === item.proizvod.kolicina" class="warning">
+      Dostignuta maksimalna količina
+    </p>
+    <img [src]="'http://localhost:5000' + item.proizvod.slika" alt="Slika proizvoda" />
+    <div class="item-details">
+      <h3>{{ item.proizvod.ime }}</h3>
+      <div class="quantity-control">
+        <label>Količina:</label>
+        <button (click)="smanji(item.proizvod._id)">−</button>
+        <span>{{ item.kolicina }}</span>
+        <button (click)="povecaj(item.proizvod._id)">+</button>
+      </div>
+      <p class="price">Cijena: {{ item.proizvod.cijena | currency : 'EUR' }}</p>
+      <button class="remove-btn" (click)="obrisiStavku(item.proizvod._id)">Ukloni</button>
+    </div>
+  </div>
+
+  <div *ngIf="korpa.length > 0" class="summary">
+    <hr />
+    <h3>Ukupno: {{ ukupno | currency : 'EUR' }}</h3>
+    <button class="order-btn" (click)="otvoriModal()">Poruči</button>
+  </div>
+
+  <div *ngIf="modalOtvoren" class="modal-overlay">
+    <div class="modal">
+      <h3>Plaćanje</h3>
+      <label>
+        <input type="radio" name="nacin" [(ngModel)]="nacinPlacanja" value="pouzećem" />
+        Pouzećem
+      </label>
+      <label>
+        <input type="radio" name="nacin" [(ngModel)]="nacinPlacanja" value="karticom" />
+        Karticom
+      </label>
+      <div class="modal-buttons">
+        <button class="cancel-btn" (click)="odustani()">Odustani</button>
+        <button class="confirm-btn" (click)="nastavi()">Nastavi sa kupovinom</button>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

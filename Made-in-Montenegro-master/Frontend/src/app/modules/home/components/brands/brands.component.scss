@@ -1,0 +1,117 @@
+:host {
+  display: block;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 60px 20px;
+}
+
+h2 {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 50px;
+  color: #2a2a2a;
+  font-weight: 700;
+}
+
+.brands-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+}
+
+.brand-logo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.brand-logo:hover {
+  transform: scale(1.07);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
+}
+
+.brand-logo img {
+  width: 85%;
+  height: 85%;
+  object-fit: contain;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.brand-details {
+  max-width: 650px;
+  margin: 60px auto 0;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.brand-details h3 {
+  color: #222;
+  font-size: 1.6rem;
+  margin-bottom: 16px;
+}
+
+.brand-details p {
+  font-size: 1rem;
+  color: #444;
+}
+
+.brand-details button {
+  margin-top: 20px;
+  padding: 10px 26px;
+  background-color: #4a4e69;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.brand-details button:hover {
+  background-color: #22223b;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .brand-logo {
+    width: 130px;
+    height: 130px;
+  }
+
+  .brands-wrapper {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .brand-details h3 {
+    font-size: 1.3rem;
+  }
+}

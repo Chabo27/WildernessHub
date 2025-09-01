@@ -1,0 +1,52 @@
+/* Layout za zalijepljeni footer */
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.order-container {
+  flex: 1;
+  padding: 3rem;
+  margin-top: 20px !important;
+}
+
+/* --- Tvoji postojeći stilovi --- */
+
+h2 {
+  text-align: center;
+  margin: 3rem 5rem 1rem;
+  font-size: 24px;
+  color: #333;
+}
+
+.order-card {
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1rem auto;
+  max-width: 700px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+.order-card:hover {
+  background-color: #f9f9f9;
+}
+
+ul {
+  padding-left: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  font-size: 15px;
+}
+
+div[ng-reflect-ng-if="true"] {
+  text-align: center;
+  margin-top: 2rem;
+  color: #666;
+  font-style: italic;
+}

@@ -1,0 +1,37 @@
+<app-navbar2></app-navbar2>
+<div class="manufacturer-header" *ngIf="producer">
+  <img
+    [src]="'http://localhost:5000' + producer.logo"
+    alt="{{ producer.ime }} logo"
+  />
+  <h2>{{ producer.ime }}</h2>
+  <p>{{ producer.opis }}</p>
+</div>
+
+<h3>Proizvodi</h3>
+
+<div class="products-grid">
+  <div
+    class="product-card"
+    *ngFor="let product of products"
+    [routerLink]="['/proizvodi', product._id]"
+  >
+    <img
+      [src]="'http://localhost:5000' + product.slika"
+      alt="{{ product.ime }}"
+    />
+    <h4>{{ product.ime }}</h4>
+  </div>
+
+  <!-- Prazne kartice da ispune mrežu ako ima manje od 3 -->
+  <div class="product-card empty" *ngIf="products.length === 1"></div>
+  <div
+    class="product-card empty"
+    *ngIf="products.length === 1 || products.length === 2"
+  ></div>
+</div>
+
+<ng-template #noProducts>
+  <p class="no-products">Nema dostupnih proizvoda.</p>
+</ng-template>
+<app-footer></app-footer>

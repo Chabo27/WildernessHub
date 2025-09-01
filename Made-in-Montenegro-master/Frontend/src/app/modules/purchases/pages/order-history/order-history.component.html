@@ -1,0 +1,33 @@
+<app-navbar2></app-navbar2>
+
+<div class="order-container">
+  <h2>Moje porudžbine</h2>
+
+  <div *ngIf="orders.length === 0">Nemate nijednu porudžbinu.</div>
+
+  <div
+    *ngFor="let narudzba of orders"
+    class="order-card"
+    (click)="toggleOrder(narudzba._id)"
+    style="cursor: pointer"
+  >
+    <p><strong>Datum:</strong> {{ narudzba.datum | date : "medium" }}</p>
+    <p><strong>Način plaćanja:</strong> {{ narudzba.nacinPlacanja }}</p>
+    <p>
+      <strong>Ukupno:</strong>
+      {{ getUkupnoZaNarudzbu(narudzba._id) | number : "1.2-2" }} €
+    </p>
+
+    <div *ngIf="expandedOrderId === narudzba._id && stavkeMap[narudzba._id]">
+      <p><strong>Stavke:</strong></p>
+      <ul>
+        <li *ngFor="let stavka of stavkeMap[narudzba._id]">
+          {{ stavka.proizvod?.ime }} — {{ stavka.kolicina }} ×
+          {{ stavka.proizvod?.cijena | number: '1.2-2' }} €
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

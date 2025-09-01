@@ -1,0 +1,58 @@
+.admin-dashboard {
+  max-width: 1200px;
+  margin: auto;
+  padding: 2rem;
+
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+    color: #333;
+    margin-bottom: 2rem;
+  }
+
+  .admin-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+
+    a {
+      text-decoration: none;
+      padding: 0.6rem 1.2rem;
+      background-color: rgba(0, 84, 119, 0.7);;
+      color: white;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+
+      &:hover,
+      &.active {
+        background-color: #0056b3;
+      }
+    }
+  }
+
+  hr {
+    border: none;
+    height: 2px;
+    background-color: #ddd;
+    margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 1rem;
+
+    .admin-nav {
+      flex-direction: column;
+      align-items: center;
+
+      a {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+}

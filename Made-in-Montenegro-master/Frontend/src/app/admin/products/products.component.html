@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Proizvodi</h2>
+  <button (click)="add()">+ Dodaj proizvod</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Ime</th>
+        <th>Opis</th>
+        <th>Cijena</th>
+        <th>Količina</th>
+        <th>Proizvođač</th>
+        <th>Slika</th>
+        <th>Akcije</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of products">
+        <td data-label="Ime">{{ p.ime }}</td>
+        <td data-label="Opis">{{ p.opis }}</td>
+        <td data-label="Cijena">{{ p.cijena }}€</td>
+        <td data-label="Količina">{{ p.kolicina }}</td>
+        <td data-label="Proizvođač">{{ p.proizvodjac.ime || "N/A" }}</td>
+        <td data-label="Slika">
+          <img *ngIf="p.slika" [src]="'http://localhost:5000' + p.slika" />
+        </td>
+        <td data-label="Akcije">
+          <div class="akcije-btn-grupa">
+            <button (click)="edit(p._id)">Izmijeni</button>
+            <button (click)="delete(p._id)">Obriši</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

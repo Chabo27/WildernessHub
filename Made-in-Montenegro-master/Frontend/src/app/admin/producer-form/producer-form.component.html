@@ -1,0 +1,19 @@
+<div class="container">
+  <h2>{{ editMode ? 'Izmijeni proizvođača' : 'Dodaj proizvođača' }}</h2>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <label>Ime:</label>
+    <input type="text" formControlName="ime" required />
+
+    <label>Opis:</label>
+    <textarea formControlName="opis" rows="3"></textarea>
+
+    <label>URL logotipa:</label>
+    <input type="text" formControlName="logo" />
+
+    <div class="buttons">
+      <button type="submit">{{ editMode ? 'Sačuvaj izmjene' : 'Dodaj' }}</button>
+      <button type="button" (click)="otkazi()">Otkaži</button>
+    </div>
+  </form>
+</div>

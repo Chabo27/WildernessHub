@@ -1,0 +1,18 @@
+<div
+  *ngIf="notification"
+  [ngClass]="['toast', notification.tip]"
+  class="toast-notification"
+>
+  {{ notification.poruka }}
+</div>
+
+<div
+  *ngIf="globalMessage"
+  class="global-message"
+>
+  {{ globalMessage }}
+</div>
+
+<main>
+  <router-outlet></router-outlet>
+</main>

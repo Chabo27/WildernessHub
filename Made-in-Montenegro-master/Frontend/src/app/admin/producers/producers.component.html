@@ -1,0 +1,34 @@
+<div class="container">
+  <h2>Proizvođači</h2>
+  <button (click)="dodaj()">+ Dodaj novog proizvođača</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Ime</th>
+        <th>Opis</th>
+        <th>Logo</th>
+        <th>Akcije</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of producers">
+        <td>{{ p.ime }}</td>
+        <td>{{ p.opis }}</td>
+        <td>
+          <img
+            *ngIf="p.logo"
+            [src]="'http://localhost:5000' + p.logo"
+            width="60"
+          />
+        </td>
+        <td>
+          <div class="akcije-btn-grupa">
+            <button (click)="izmijeni(p._id)">Izmijeni</button>
+            <button (click)="obrisi(p._id)">Obriši</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

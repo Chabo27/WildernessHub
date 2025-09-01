@@ -1,0 +1,21 @@
+<app-navbar2></app-navbar2>
+
+<div class="profile-container">
+  <h2>Profil korisnika</h2>
+
+  <div class="profile-card" *ngIf="user">
+    <p><strong>Ime:</strong> {{ user.ime }}</p>
+    <p><strong>Prezime:</strong> {{ user.prezime }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Adresa:</strong> {{ user.adresa }}</p>
+    <p><strong>Grad:</strong> {{ user.grad?.ime }}</p>
+  </div>
+
+  <div *ngIf="!user">
+    <p>Učitavanje podataka...</p>
+  </div>
+
+  <button type="button" (click)="idiNaNarudzbine()">Moje porudžbine</button>
+</div>
+
+<app-footer></app-footer>

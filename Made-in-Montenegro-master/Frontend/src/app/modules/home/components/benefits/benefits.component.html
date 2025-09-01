@@ -1,0 +1,10 @@
+<section class="benefits">
+  <h2>Zašto kupovati kod nas?</h2>
+  <div class="benefits__grid">
+    <div class="benefit fade-on-scroll" #benefitCard *ngFor="let stavka of razlozi">
+      <i [class]="stavka.ikona"></i>
+      <h3>{{ stavka.naslov }}</h3>
+      <p>{{ stavka.opis }}</p>
+    </div>
+  </div>
+</section>
